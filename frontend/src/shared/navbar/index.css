@@ -1,0 +1,21 @@
+.nav-bar{
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #000000;
+    opacity: 0.8;
+}
+
+.text{
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}

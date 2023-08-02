@@ -1,0 +1,11 @@
+.connexion-page {
+    background-image: url('../../images/background-image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

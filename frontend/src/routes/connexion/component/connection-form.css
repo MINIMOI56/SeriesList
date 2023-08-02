@@ -1,0 +1,44 @@
+.connexion-form-container {
+    width: 500px;
+    height: 400px;
+    border: 1px solid black;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    background-color: rgba(0,0,0,.8);
+    color: #fff;
+}
+
+form {
+    margin: 0;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.text{
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.small-text{
+    color: #fff;
+    font-size: 20px;
+}
+
+button{
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
