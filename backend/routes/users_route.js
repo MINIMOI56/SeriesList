@@ -5,7 +5,6 @@ const User = require('../models/user_entity.js');
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const validateToken = require('../middleware/authMiddleware');
 
 /* GET all users */
 router.get('/', async (req, res) => {
@@ -118,7 +117,7 @@ router.post('/connection', async function (req, res, next) {
 router.post('/inscription', async function (req, res, next) {
   await mongoose.connect(process.env.MONGO_APP_URI);
 
-  const emailDoesExist = await User.findOne({ email: req.body.courriel })
+  const emailDoesExist = await User.findOne({ email: req.body.email })
   if (emailDoesExist) return res.status(400).send({ error: 'The email already exist.' })
 
   if (req.body.password.length < 8) {

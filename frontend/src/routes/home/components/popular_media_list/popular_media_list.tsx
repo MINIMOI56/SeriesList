@@ -1,46 +1,61 @@
 
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import Media from '../../../../models/media';
+import { media } from '../../../../utiles/media';
+import Carousel from 'react-bootstrap/Carousel';
+import './popular_media_list.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function PopularMediaList() {
-
     const [medias, setMedias] = useState<Media[]>([]);
     const [enChargement, setEnChargement] = useState<boolean>(true);
+    const [index, setIndex] = useState(0);
 
-    /**
-     * Récupère les Medias de la base de données et les ajoute dans le state
-     */
-    const getMedias = () => {
-        fetch('/medias')
-            .then(response => response.json())
-            .then(data => {
-                setMedias(data);
-                setEnChargement(false);
-            });
+    const handleSelect = (selectedIndex: React.SetStateAction<number>) => {
+        setIndex(selectedIndex);
+    };
+
+    // récupère les séries populaires
+    const getPopularMedia = () => {
+        media.getPopularMedia().then((res) => {
+            setMedias(res.data);
+            setEnChargement(false);
+        }).catch((err) => {
+            if (medias.length < 1) {
+                setMedias([]);
+            }
+        }
+        );
+
     };
 
     React.useEffect(() => {
-        getMedias();
+        getPopularMedia();
     }, []);
 
-    // les evenements sont en chargement
     if (enChargement) {
         return (<div>Chargement...</div>);
     }
     else {
-        // aucun evenement
+        // aucune série
         if (medias.length === 0) {
-            return (<div>Aucun évenements à venir</div>);
+            return (<div>Il n'y a aucune série dans la base de donnée</div>);
         }
-        // affiche les evenements
+        // affiche les séries
         else {
             return (<>
-                {medias.map((evenement) => {
-                    return (<div>
-                        <h3>{evenement.title}</h3>
-                        <p>{evenement.description}</p>
-                    </div>);
-                })}
+                <h2 className='title'>Séries populaires</h2>
+                <Carousel className='media-container' activeIndex={index} onSelect={handleSelect}>
+                    {medias.map((media) => (
+                        <Carousel.Item>
+                            <img src={media.image_url} alt={media.title} className='img-gradient' />
+                            <Carousel.Caption>
+                                <h3>{media.title}</h3>
+                                <p>Score: {media.score}</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
             </>);
         }
     }

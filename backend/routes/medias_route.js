@@ -17,6 +17,32 @@ router.get('/', async(req, res) => {
   }
 });
 
+/* GET most popular media*/
+router.get('/mostPopular', async(req, res) => {
+  await mongoose.connect(process.env.MONGO_APP_URI);
+  try {
+    const medias = await Media.find().sort({ score: -1 });
+    res.json(medias);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  } finally {
+    await mongoose.connection.close();
+  }
+});
+
+/* GET the newest media*/
+router.get('/newest', async(req, res) => {
+  await mongoose.connect(process.env.MONGO_APP_URI);
+  try {
+    const medias = await Media.find().sort({ start_date: -1 });
+    res.json(medias);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  } finally {
+    await mongoose.connection.close();
+  }
+});
+
 /* GET media by id*/
 router.get('/:id', async(req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
@@ -29,7 +55,8 @@ router.get('/:id', async(req, res) => {
     await mongoose.connection.close();
   }
 });
-    
+
+
 /* POST new media */
 router.post('/', async(req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);

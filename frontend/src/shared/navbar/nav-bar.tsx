@@ -1,5 +1,6 @@
-import './index.css'
+import './nav-bar.css'
 import '@picocss/pico'
+import Logo from '../../images/logo.png'
 
 export default function Index() {
     return (
@@ -8,7 +9,9 @@ export default function Index() {
                 <li><a href="/home" className='secondary text'>Home</a></li>
             </ul>
             <ul>
-                <li className='text'><strong>Brand</strong></li>
+                <li>
+                    <img src={Logo} alt="logo" className='logo' />
+                </li>
             </ul>
             <ul>
                 <li><a href="/connexion" className='secondary text'>My list</a></li>

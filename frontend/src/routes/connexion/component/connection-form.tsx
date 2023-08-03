@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import './connection-form.css'
 import { authentification } from '../../../utiles/authentification';
-import { Router, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function ConnectionForm() {
     const [email, setEmail] = useState('');
