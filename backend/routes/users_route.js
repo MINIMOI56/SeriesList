@@ -14,8 +14,6 @@ router.get('/', async (req, res) => {
     res.json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
-  } finally {
-    await mongoose.connection.close();
   }
 });
 
@@ -27,8 +25,6 @@ router.get('/:id', async (req, res) => {
     res.json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
-  } finally {
-    await mongoose.connection.close();
   }
 });
 
@@ -42,8 +38,6 @@ router.put('/:id', async (req, res) => {
     res.json(user);
   } catch (err) {
     res.status(400).json({ message: err.message });
-  } finally {
-    await mongoose.connection.close();
   }
 });
 
@@ -55,8 +49,6 @@ router.delete('/:id', async (req, res) => {
     res.json(user);
   } catch (err) {
     res.status(400).json({ message: err.message });
-  } finally {
-    await mongoose.connection.close();
   }
 });
 
@@ -101,8 +93,6 @@ router.post('/connection', async function (req, res, next) {
   });
 
   res.status(200).json({ token: token });
-
-  mongoose.connection.close();
 });
 
 
@@ -145,8 +135,6 @@ router.post('/inscription', async function (req, res, next) {
   }
   catch (err) {
     res.status(500).json({ error: 'An error as occured.' });
-  } finally {
-    mongoose.connection.close();
   }
 });
 

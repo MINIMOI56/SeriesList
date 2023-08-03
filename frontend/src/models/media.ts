@@ -1,5 +1,5 @@
 export default class Media {
-    id: String;
+    _id: string;
     title: string;
     description: string;
     image_url: string;
@@ -14,7 +14,7 @@ export default class Media {
     score: number;
 
     constructor(data: any) {
-        this.id = data._id;
+        this._id = data._id;
         this.title = data.title;
         this.description = data.description;
         this.image_url = data.image_url;

@@ -14,6 +14,7 @@ import ConnectedLayout from './shared/layouts/connected-layout';
 import Home from './routes/home';
 import Connexion from './routes/connexion';
 import Inscription from './routes/inscription';
+import Serie from './routes/serie';
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/serie/:id",
+        element: <Serie />,
       },
     ]
   }

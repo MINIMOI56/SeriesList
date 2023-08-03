@@ -20,12 +20,7 @@ export default function PopularMediaList() {
         media.getPopularMedia().then((res) => {
             setMedias(res.data);
             setEnChargement(false);
-        }).catch((err) => {
-            if (medias.length < 1) {
-                setMedias([]);
-            }
-        }
-        );
+        });
 
     };
 
@@ -45,14 +40,16 @@ export default function PopularMediaList() {
         else {
             return (<>
                 <h2 className='title'>Séries populaires</h2>
-                <Carousel className='media-container' activeIndex={index} onSelect={handleSelect}>
+                <Carousel className='media-container carousel-big' activeIndex={index} onSelect={handleSelect}>
                     {medias.map((media) => (
                         <Carousel.Item>
-                            <img src={media.image_url} alt={media.title} className='img-gradient' />
-                            <Carousel.Caption>
-                                <h3>{media.title}</h3>
-                                <p>Score: {media.score}</p>
-                            </Carousel.Caption>
+                            <div className='img-gradient'>
+                                <img src={media.image_url} alt={media.title} className='img-gradient media-img'/>
+                                <Carousel.Caption>
+                                    <h3>{media.title}</h3>
+                                    <p>Score: {media.score}</p>
+                                </Carousel.Caption>
+                            </div>
                         </Carousel.Item>
                     ))}
                 </Carousel>

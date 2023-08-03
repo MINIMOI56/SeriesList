@@ -8,6 +8,7 @@ export default function Index() {
       <section className='home-title'>
         <div>
           <PopularMediaList/>
+          <hr/>
           <NewestMediaList/>
         </div>
       </section>

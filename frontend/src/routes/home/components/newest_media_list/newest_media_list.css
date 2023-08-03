@@ -1,0 +1,25 @@
+.media-card{
+    height: 300px;
+    width: 200px;
+    border-radius: 15px;
+    transition: all 0.05s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+}
+
+.wrapper{
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+}
+
+.wrapper::-webkit-scrollbar {
+    width: 0;
+}
+
+.item{
+    min-width: 200px;
+    text-align: center;
+}
