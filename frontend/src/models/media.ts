@@ -12,6 +12,8 @@ export default class Media {
     start_date: Date;
     end_date: Date;
     score: number;
+    comments: any[];
+    personal_status: string;
 
     constructor(data: any) {
         this._id = data._id;
@@ -26,6 +28,8 @@ export default class Media {
         this.rating = data.rating;
         this.start_date = data.start_date;
         this.end_date = data.end_date;
-        this.score = data.score;        
+        this.score = data.score;       
+        this.comments = data.comments;
+        this.personal_status = data.personal_status; 
     }
 }

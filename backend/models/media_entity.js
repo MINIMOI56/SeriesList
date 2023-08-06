@@ -104,6 +104,12 @@ const MediaSchema = new Schema({
         type: [Comment.schema],
         default: []
     },
+    peronal_status: {
+        type: String,
+        required: true,
+        enum: ['watching', 'completed', 'on hold', 'dropped', 'plan to watch'],
+        default: 'plan to watch'
+    },
 });
 
 
