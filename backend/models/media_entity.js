@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const fetch = require("node-fetch");
+const Comment = require('./comment_entity.js');
 
 const MediaSchema = new Schema({
     title: {
@@ -98,6 +99,10 @@ const MediaSchema = new Schema({
     image_url: {
         type: String,
         required: true,
+    },
+    comments: {
+        type: [Comment.schema],
+        default: []
     },
 });
 

@@ -39,8 +39,8 @@ export default function PopularMediaList() {
         // affiche les séries
         else {
             return (<>
-                <h2 className='title'>Séries populaires</h2>
-                <Carousel className='media-container carousel-big' activeIndex={index} onSelect={handleSelect}>
+                <h2 className='carousel-title'>Séries populaires</h2>
+                <Carousel className='carousel-big' activeIndex={index} onSelect={handleSelect}>
                     {medias.map((media) => (
                         <Carousel.Item>
                             <div className='img-gradient'>

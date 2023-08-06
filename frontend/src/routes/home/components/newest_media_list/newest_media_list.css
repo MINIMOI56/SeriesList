@@ -1,25 +1,33 @@
-.media-card{
+.media-card {
     height: 300px;
     width: 200px;
     border-radius: 15px;
     transition: all 0.05s ease-in-out;
-    position: relative;
     overflow: hidden;
     object-fit: cover;
-    object-position: center;
 }
 
-.wrapper{
+.wrapper {
+    width: 950px;
     display: flex;
     overflow-x: auto;
     gap: 20px;
 }
 
 .wrapper::-webkit-scrollbar {
-    width: 0;
+    display: none;
 }
 
-.item{
+.item {
     min-width: 200px;
     text-align: center;
+}
+
+.list-title {
+    font-size: 40px;
+    font-weight: 500;
+    color: #4fb5ab;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }

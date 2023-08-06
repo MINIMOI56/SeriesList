@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import Navbar from '../navbar/nav-bar';
 import { authentification } from '../../utiles/authentification';
 
-function ConnectedContent() {
+function ConnectedLayout() {
     return (
         <div>
             <Navbar />
@@ -18,5 +18,5 @@ export default function Index() {
     if (!authentification.estConnecte()) {
         return <Navigate to={'/connexion'}/>;
     }
-    return <ConnectedContent />;
+    return <ConnectedLayout />;
 }

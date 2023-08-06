@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/mostPopular', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
-    const medias = await Media.find().sort({ score: -1 });
+    const medias = await Media.find().sort({ score: -1 }).limit(10);
     res.json(medias);
   } catch (err) {
     res.status(500).json({ message: err.message });

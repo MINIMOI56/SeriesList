@@ -39,7 +39,7 @@ export default function NewestMediaList() {
         // affiche les séries
         else {
             return (<>
-                <h2 className='title'>Nouvelles sorties</h2>
+                <h2 className='list-title'>Nouvelles sorties</h2>
                 <div className='wrapper'>
                 {medias.map((media) => (
                         <div className='item'>
