@@ -16,7 +16,7 @@ export default function NewestMediaList() {
         navigate('/serie/'+id);
     };
 
-    // récupère les dernières séries sorties
+    // récupère les nouvelles séries sorties
     const getNewestMedia = () => {
         media.getNewestMedia().then((res) => {
             setMedias(res.data);

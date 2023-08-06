@@ -8,9 +8,9 @@ export default class Media {
     avrg_episode_time: number;
     status: string;
     type: string;
-    rating: number;
+    rating: string;
     start_date: Date;
-    end_date: Date;
+    end_date: Date | undefined;
     score: number;
     comments: any[];
     personal_status: string;

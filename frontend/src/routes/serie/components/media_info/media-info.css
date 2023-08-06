@@ -1,0 +1,49 @@
+.serie-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #4fb5ab;
+    text-align: center;
+}
+
+.serie-info-layout {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4fb5ab;
+    text-align: left;
+    flex-direction: column;
+    align-items: left;
+    border: 1px solid #4fb5ab;
+    border-radius: 10px;
+    padding: 10px;
+    width: auto;
+}
+
+.serie-info-title {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #4fb5ab;
+    text-align: left;
+}
+
+.serie-info-description {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+    text-align: left;
+}
+
+.serie-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.05s ease-in-out;
+    z-index: 0;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}

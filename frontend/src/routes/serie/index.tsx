@@ -1,18 +1,17 @@
 import { useParams } from 'react-router-dom';
 import './index.css';
 import MediaInfo from './components/media_info/media-info';
+import MediaComments from './components/media_comments/media-comments';
 
 export default function Index() {
   let { id } = useParams();
-  console.log(id);
 
   return (
-    <div className='home-page'>
-      <section className='home-title'>
-        <div>
+    <div className='serie-page'>
+      <div>
           <MediaInfo id={id} />
-        </div>
-      </section>
+          <MediaComments id={id} />
+      </div>
     </div>
   );
 }

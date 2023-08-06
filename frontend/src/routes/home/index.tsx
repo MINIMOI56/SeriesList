@@ -5,13 +5,11 @@ import './index.css';
 export default function Index() {
   return (
     <div className='home-page'>
-      <section className='home-title'>
         <div>
           <PopularMediaList/>
           <hr/>
           <NewestMediaList/>
         </div>
-      </section>
     </div>
   );
 }
