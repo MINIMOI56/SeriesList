@@ -220,7 +220,7 @@ export default function MediaComments({ id }: { id: any }) {
                                 setNewComment(e.target.value);
                                 expandTextarea("txtarea");
                             }} />
-                            <button className="comments-button" type="submit">Publier</button>
+                            <button className="add-comments-button" type="submit">Publier</button>
                         </form>
                     </div>
                     {comments.map((comment) => (
