@@ -1,4 +1,4 @@
-.wrapping-comments-container{
+.wrapping-comments-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,7 +11,7 @@
     gap: 10px;
 }
 
-.comments-container{
+.comments-container {
     border: 1px solid #4fb5ab;
     border-radius: 10px;
     padding: 25px;
@@ -19,21 +19,21 @@
     width: 100%;
 }
 
-.comments-header{
+.comments-header {
     display: flex;
     justify-content: left;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.comments-user{
+.comments-user {
     display: flex;
     align-items: center;
     font-size: 32px;
     padding-left: 10px;
 }
 
-.comments-user-image{
+.comments-user-image {
     width: 50px;
     height: 50px;
     border-radius: 40px;
@@ -42,22 +42,32 @@
     border: 1px solid rgba(36, 36, 40, 255);
 }
 
-.comments-time{
+.comments-time {
     font-size: 14px;
     color: #33333350;
     margin-left: 10px;
 }
 
-.comments-body{
+.comments-body {
     margin-bottom: 10px;
 }
 
-.comments-text{
+.comments-text {
     font-size: 14px;
     color: rgba(36, 36, 40, 255);
 }
 
-.comments-delete-icon{
+.comments-button {
+    margin-top: 25px;
+    background-color: #fff;
+}
+
+.comments-form {
+    padding-left: 10px;
+    padding-top: 0px;
+}
+
+.comments-delete-icon {
     margin-left: 10px;
     cursor: pointer;
     color: #c00d00;
@@ -65,15 +75,15 @@
     transform: translateY(-10px)
 }
 
-.comments-edit-icon{
+.comments-edit-icon {
     margin-left: auto;
     cursor: pointer;
-    color: gray;
+    color: rgb(91, 91, 91);
     font-size: 24px;
     transform: translateY(-10px)
 }
 
-.comments-accept-icon{
+.comments-accept-icon {
     margin-left: auto;
     cursor: pointer;
     color: #26bd58;
@@ -81,7 +91,7 @@
     transform: translateY(-10px);
 }
 
-.comments-cancel-icon{
+.comments-cancel-icon {
     cursor: pointer;
     color: #c00d00;
     font-size: 40px;
@@ -89,18 +99,18 @@
     padding-left: 8px;
 }
 
-.add-comments{
+.add-comments {
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding-bottom: 25px;
 }
 
-.add-comments-text{
+.add-comments-text {
     color: #4fb5ab;
 }
 
-.add-comments-button{
+.add-comments-button {
     width: 250px;
     height: 50px;
     border-radius: 10px;
@@ -110,4 +120,17 @@
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+}
+
+/* https://stackoverflow.com/questions/37629860/automatically-resizing-textarea-in-bootstrap */
+/* Modifier pour avoir le style que je voulais*/
+textarea {
+    padding-top: 10px;
+    width: 100%;
+    display: block;
+    color: #fff;
+    border: 1px solid #4fb5ab;
+    border-radius: 10px;
+    font-size: 20px;
+    outline: none;
 }

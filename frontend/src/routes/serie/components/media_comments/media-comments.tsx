@@ -51,12 +51,13 @@ export default function MediaComments({ id }: { id: any }) {
         for (const interval of intervals) {
             const value = Math.floor(seconds / interval.seconds);
             if (value >= 1) {
-                return "Il y a " + value + " " + (value > 1 ?interval.label + "s" : interval.label);
+                return "Il y a " + value + " " + (value > 1 ? interval.label + "s" : interval.label);
             }
         }
 
         return "à l'instant";
     };
+
 
     /**
     * This function is used to send the data to the backend and create a new comment for the media
@@ -84,6 +85,7 @@ export default function MediaComments({ id }: { id: any }) {
         }
     }
 
+
     /**
     * This function is used to check if the comment is valid
     * @param The user's comment
@@ -107,6 +109,7 @@ export default function MediaComments({ id }: { id: any }) {
         setNewCommentError('');
         return true;
     }
+
 
     /**
      * This function is used to edit a comment
@@ -181,6 +184,21 @@ export default function MediaComments({ id }: { id: any }) {
         getCurrentUser();
     }, []);
 
+
+    // Code trouver sur internet pour agrandir le textarea en fonction du texte
+    // lien: https://stackoverflow.com/questions/37629860/automatically-resizing-textarea-in-bootstrap
+    const expandTextarea = (id: string) => {
+        const element = document.getElementById(id);
+        if (element != null) {
+            element.addEventListener('keyup', function () {
+                this.style.overflow = 'hidden';
+                this.style.height = '0';
+                this.style.height = this.scrollHeight + 'px';
+            }, false);
+        }
+    };
+
+
     if (enChargement) {
         return (<div>Chargement...</div>);
     }
@@ -198,7 +216,10 @@ export default function MediaComments({ id }: { id: any }) {
                     <div className="add-comments">
                         <img className='comments-user-image' src={currentUser?.profile_picture} alt="user profile picture" />
                         <form className="comments-form" onSubmit={sendComment}>
-                            <textarea className="comments-textarea" placeholder="Ajouter un commentaire" value={newComment} onChange={(e) => setNewComment(e.target.value)} />
+                            <textarea id="txtarea" className="comments-textarea" placeholder="Ajouter un commentaire" value={newComment} onChange={(e) => {
+                                setNewComment(e.target.value);
+                                expandTextarea("txtarea");
+                            }} />
                             <button className="comments-button" type="submit">Publier</button>
                         </form>
                     </div>
@@ -211,7 +232,7 @@ export default function MediaComments({ id }: { id: any }) {
                                 {isEditingComment && currentUser._id === comment.user_id && comment._id == editCommentId && <BsCheck2 className="comments-accept-icon" onClick={() => {
                                     editComment(comment._id);
                                     setIsEditingComment(false);
-                                } }/>}
+                                }} />}
                                 {!isEditingComment && currentUser._id === comment.user_id && <AiFillEdit className='comments-edit-icon' onClick={() => {
                                     setIsEditingComment(true);
                                     setEditedComment(comment.comment);
@@ -219,7 +240,7 @@ export default function MediaComments({ id }: { id: any }) {
                                 }} />}
                                 {isEditingComment && currentUser._id === comment.user_id && comment._id == editCommentId && <FcCancel className="comments-cancel-icon" onClick={() => {
                                     setIsEditingComment(false);
-                                } }/>}
+                                }} />}
                                 {!isEditingComment && currentUser._id === comment.user_id && <RiDeleteBinLine className='comments-delete-icon' onClick={() => {
                                     deleteComment(comment._id);
                                 }} />}
@@ -228,10 +249,10 @@ export default function MediaComments({ id }: { id: any }) {
                             <div className="comments-body">
                                 {/* i want that when i click the edit button you switch the <p> to something that i can edit*/}
                                 {/* <p className="comments-text">{comment.comment}</p> */}
-                                {isEditingComment && comment._id == editCommentId 
-                                    ? 
-                                    <input className="comments-textarea" value={editedComment} onChange={(e) => setEditedComment(e.target.value)}/> 
-                                    : 
+                                {isEditingComment && comment._id == editCommentId
+                                    ?
+                                    <input className="comments-textarea" value={editedComment} onChange={(e) => setEditedComment(e.target.value)} />
+                                    :
                                     <p className="comments-text">{comment.comment}</p>}
                             </div>
                         </div>
