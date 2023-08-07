@@ -8,6 +8,10 @@
     width:950px;
     height:600px;
     margin: auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .media-img{
@@ -18,7 +22,7 @@
     transition: all 0.05s ease-in-out;
     z-index: 0;
     position: relative;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -29,7 +33,6 @@
     text-align: center;
     margin-top: 10px;
     margin-bottom: 15px;
-
 }
 
 .media-title {
