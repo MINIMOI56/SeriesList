@@ -5,6 +5,7 @@ const Comment = require('../models/comment_entity');
 const Media = require('../models/media_entity');
 const User = require('../models/user_entity');
 require('dotenv').config();
+const validateToken = require('../middleware/authMiddleware.js');
 
 /* GET all comments*/
 router.get('/', async (req, res) => {
@@ -80,7 +81,7 @@ router.get('/user/:userId', async (req, res) => {
 
 
 /* POST new Comment */
-router.post('/:userId/:mediaId', async (req, res) => {
+router.post('/:userId/:mediaId', validateToken, async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
     const user = await User.findById(req.params.userId);

@@ -169,7 +169,7 @@ router.post('/inscription', async function (req, res, next) {
  * @throws An error if the media does not exist
  * @throws An error if the user does not exist
  */
-router.post('/addFavorite/:userId/:mediaId', /*validateToken ,*/ async function (req, res, next) {
+router.post('/addFavorite/:userId/:mediaId', validateToken , async function (req, res, next) {
   await mongoose.connect(process.env.MONGO_APP_URI);
 
   const user = await User.findById(req.params.userId);
@@ -202,7 +202,7 @@ router.post('/addFavorite/:userId/:mediaId', /*validateToken ,*/ async function 
  * @throws An error if the media does not exist
  * @throws An error if the user does not exist
  */
-router.delete('/deleteFavorite/:userId/:mediaId', /*validateToken ,*/ async function (req, res, next) {
+router.delete('/deleteFavorite/:userId/:mediaId', validateToken , async function (req, res, next) {
   await mongoose.connect(process.env.MONGO_APP_URI);
 
   const user = await User.findById(req.params.userId);

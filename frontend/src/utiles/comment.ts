@@ -25,4 +25,20 @@ export const comment = {
     getNewestComments: () => {
         return axiosInstance.get('comments/newest');
     },
+
+    postComment: (userId: string, mediaId: string, comment: string) => {
+        return axiosInstance.post('comments/' + userId + '/' + mediaId, {
+            comment: comment,
+        });
+    },
+
+    editComment: (id: string, comment: string) => {
+        return axiosInstance.put('comments/' + id, {
+            comment: comment,
+        });
+    },
+
+    deleteComment: (id: string) => {
+        return axiosInstance.delete('comments/' + id);
+    }
 }

@@ -8,6 +8,7 @@
     padding: 25px;
     border: 1px solid #4fb5ab;
     border-radius: 10px;
+    gap: 10px;
 }
 
 .comments-container{
@@ -54,6 +55,38 @@
 .comments-text{
     font-size: 14px;
     color: rgba(36, 36, 40, 255);
+}
+
+.comments-delete-icon{
+    margin-left: 10px;
+    cursor: pointer;
+    color: #c00d00;
+    font-size: 24px;
+    transform: translateY(-10px)
+}
+
+.comments-edit-icon{
+    margin-left: auto;
+    cursor: pointer;
+    color: gray;
+    font-size: 24px;
+    transform: translateY(-10px)
+}
+
+.comments-accept-icon{
+    margin-left: auto;
+    cursor: pointer;
+    color: #26bd58;
+    font-size: 30px;
+    transform: translateY(-10px);
+}
+
+.comments-cancel-icon{
+    cursor: pointer;
+    color: #c00d00;
+    font-size: 40px;
+    transform: translateY(-10px);
+    padding-left: 8px;
 }
 
 .add-comments{

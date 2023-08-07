@@ -1,5 +1,5 @@
 export default class User {
-    id: String;
+    _id: string;
     username: string;
     profile_picture
     email: string;
@@ -8,7 +8,7 @@ export default class User {
     created_at: Date;
 
     constructor(data: any) {
-        this.id = data._id;
+        this._id = data._id;
         this.username = data.username;
         this.profile_picture = data.profile_picture;
         this.email = data.email;
