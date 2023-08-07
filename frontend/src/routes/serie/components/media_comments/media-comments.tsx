@@ -1,16 +1,16 @@
 
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import Comment from '../../../../models/comment';
 import User from '../../../../models/user';
 import { comment } from '../../../../utiles/comment';
-import { user } from '../../../../utiles/user';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './media-comments.css';
-import { get } from 'http';
+import '@picocss/pico';
 
 export default function MediaComments({ id }: { id: any }) {
     const [comments, setComments] = useState<Comment[]>([]);
-    const [users, setUsers] = useState<User>();
+    const [users, setUsers] = useState<Map<string, User>>(
+        new Map<string, User>()
+    );
     const [enChargement, setEnChargement] = useState<boolean>(true);
 
     /* Fonction qui formatte la date en temps écoulé
@@ -55,16 +55,20 @@ export default function MediaComments({ id }: { id: any }) {
     };
 
 
-    // récupère le user qui a écrit le commentaire
-    const getUserById = (id: string) => {
-        user.getUserById(id).then((res) => {
-            setUsers(res.data);
+    // récupère tout les users
+    const getAllUsers = (mediaId: string) => {
+        comment.getAllUsersByMediaId(mediaId).then((res) => {
+            const users = new Map<string, User>();
+            for (const user of res.data) {
+                users.set(user._id, user);
+            }
+            setUsers(users);
         });
     };
 
     React.useEffect(() => {
         getCommentsByMediaId();
-        getUserById(id);
+        getAllUsers(id);
     }, []);
 
     if (enChargement) {
@@ -77,22 +81,24 @@ export default function MediaComments({ id }: { id: any }) {
         }
         // affiche les commentaire
         else {
+            console.log(localStorage.getItem('token')?.toString() ?? '{}');
             return (<>
-                <div className="comments-container">
+                <div className="wrapping-comments-container">
+                    <div className="add-comments">
+                        <h3 className='add-comments-text'>Commentaires:</h3>
+                        <button type='submit' className='add-comments-button'>Ajouter un commentaire</button>
+                    </div>
                     {comments.map((comment) => (
-                        // getUserById(comment.user_id),
-                        <>
+                        <div className='comments-container'>
                             <div className="comments-header">
-                                <div className="comments-user-img">
-                                    <img src={users?.profile_picture} alt="user profile picture" />
-                                </div>
-                                <h2 className="comments-user">{users?.username}</h2>
-                                <h1 className="comments-time">{timeSince(comment.created_at)}</h1>
+                                <img className='comments-user-image' src={users?.get(comment.user_id)?.profile_picture} alt="user profile picture" />
+                                <h2 className="comments-user">{users?.get(comment.user_id)?.username ?? "username"}</h2>
+                                <h1 className="comments-time">{"Il y a " + timeSince(comment.created_at) + (comment.modified ? " (Modified)" : "")}</h1>
                             </div>
                             <div className="comments-body">
                                 <p className="comments-text">{comment.comment}</p>
                             </div>
-                        </>
+                        </div>
                     ))}
                 </div>
             </>);

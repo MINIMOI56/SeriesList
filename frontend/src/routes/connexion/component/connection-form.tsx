@@ -28,7 +28,8 @@ export default function ConnectionForm() {
             authentification.connection(email, password)
                 .then(response => {
                     if (response.status === 200) {
-                        authentification.sauvegarderJeton(response.data.jeton);
+                        console.log(response.data);
+                        authentification.sauvegarderJeton(response.data.token);
                         resetForm();
                         navigate('/home' , { replace: true });
                     }

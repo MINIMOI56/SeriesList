@@ -18,6 +18,19 @@ router.get('/', async (req, res) => {
 });
 
 
+/* GET all users that commented on a media*/
+router.get('/users/:mediaId', async (req, res) => {
+  await mongoose.connect(process.env.MONGO_APP_URI);
+  try {
+    const Comments = await Comment.find({ media_id: req.params.mediaId });
+    const users = await User.find({ _id: { $in: Comments.map(comment => comment.user_id) } });
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
 /* GET the newest Comments*/
 router.get('/newest', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
@@ -41,50 +54,51 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+
 /* GET Comment by mediaId*/
 router.get('/media/:mediaId', async (req, res) => {
-    await mongoose.connect(process.env.MONGO_APP_URI);
-    try {
-        const Comments = await Comment.find({ media_id: req.params.mediaId });
-        res.json(Comments);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
+  await mongoose.connect(process.env.MONGO_APP_URI);
+  try {
+    const Comments = await Comment.find({ media_id: req.params.mediaId });
+    res.json(Comments);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 
 /* GET Comment by userId*/
 router.get('/user/:userId', async (req, res) => {
-    await mongoose.connect(process.env.MONGO_APP_URI);
-    try {
-        const Comments = await Comment.find({ user_id: req.params.userId });
-        res.json(Comments);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
+  await mongoose.connect(process.env.MONGO_APP_URI);
+  try {
+    const Comments = await Comment.find({ user_id: req.params.userId });
+    res.json(Comments);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 
 /* POST new Comment */
 router.post('/:userId/:mediaId', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
-    try {
-        const user = await User.findById(req.params.userId);
-        if (!user) return res.status(400).send({ error: 'The user does not exist.' })
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) return res.status(400).send({ error: 'The user does not exist.' })
 
-        const media = await Media.findById(req.params.mediaId);
-        if (!media) return res.status(400).send({ error: 'The media does not exist.' })
+    const media = await Media.findById(req.params.mediaId);
+    if (!media) return res.status(400).send({ error: 'The media does not exist.' })
 
-        const newComment = new Comment(req.body);
-        newComment.user_id = user._id;
-        newComment.media_id = media._id;
-        newComment.created_at = Date.now();
-        newComment.modified = false;
-        await newComment.save();
-        res.json(newComment);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
+    const newComment = new Comment(req.body);
+    newComment.user_id = user._id;
+    newComment.media_id = media._id;
+    newComment.created_at = Date.now();
+    newComment.modified = false;
+    await newComment.save();
+    res.json(newComment);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 

@@ -2,7 +2,7 @@ import axiosInstance from "./axios";
 
 export const user = {
 
-    getAllUser: () => {
+    getAllUsers: () => {
         return axiosInstance.get('users/');
     },
 

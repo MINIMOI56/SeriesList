@@ -6,6 +6,10 @@ export const comment = {
         return axiosInstance.get('comments/');
     },
 
+    getAllUsersByMediaId: (id: string) => {
+        return axiosInstance.get('comments/users/' + id);
+    },
+
     getCommentsById: (id: string) => {
         return axiosInstance.get('comments/user/' + id);
     },

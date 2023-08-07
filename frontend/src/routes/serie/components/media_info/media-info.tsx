@@ -76,8 +76,7 @@ export default function MediaInfo({ id }: { id: any }) {
                             <h1 className='serie-info-title'>Average episode Time:</h1>
                             <h1 className='serie-info-description'>{medias.avrg_episode_time + " minutes"}</h1>
                             <h1 className='serie-info-title'>Score:</h1>
-                            <h1 className='serie-info-description'>{medias.score + "/10"}</h1>
-
+                            <h1 className='serie-info-description'>{medias.score + "/5"}</h1>
                         </div>
                     </div>
                 </div>
