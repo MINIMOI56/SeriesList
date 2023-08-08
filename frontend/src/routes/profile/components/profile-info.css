@@ -38,3 +38,38 @@ h1 {
     margin-bottom: 10px;
     color: #fff;
 }
+
+input {
+    color: #fff;
+}
+
+.edit-icon {
+    margin-bottom: auto;
+    cursor: pointer;
+    color: rgb(91, 91, 91);
+    font-size: 60px;
+    transform: translateY(-10px)
+}
+
+.accept-icon {
+    margin-bottom: auto;
+    cursor: pointer;
+    color: #26bd58;
+    font-size: 60px;
+    transform: translateY(-10px);
+}
+
+.cancel-icon {
+    margin-bottom: auto;
+    cursor: pointer;
+    color: #c00d00;
+    font-size: 60px;
+    transform: translateY(-10px);
+    padding-left: 8px;
+}
+
+.profile-pic-column{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
