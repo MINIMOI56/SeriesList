@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 import {
@@ -15,6 +14,7 @@ import Home from './routes/home';
 import Connexion from './routes/connexion';
 import Inscription from './routes/inscription';
 import Serie from './routes/serie';
+import Profile from './routes/profile';
 
 
 const router = createBrowserRouter([
@@ -44,6 +44,10 @@ const router = createBrowserRouter([
         path: "/serie/:id",
         element: <Serie />,
       },
+      {
+        path: "/profile",
+        element: <Profile />
+      }
     ]
   }
 ]);

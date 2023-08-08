@@ -1,4 +1,4 @@
-import InscriptionForm from './component/inscription-form';
+import InscriptionForm from './components/inscription-form';
 import './index.css';
 import '@picocss/pico'
 

@@ -214,7 +214,7 @@ export default function MediaComments({ id }: { id: any }) {
                         <h3 className='add-comments-text'>Commentaires:</h3>
                     </div>
                     <div className="add-comments">
-                        <img className='comments-user-image' src={currentUser?.profile_picture} alt="user profile picture" />
+                        <img className='comments-user-image' src={currentUser?.profile_picture} />
                         <form className="comments-form" onSubmit={sendComment}>
                             <textarea id="txtarea" className="comments-textarea" placeholder="Ajouter un commentaire" value={newComment} onChange={(e) => {
                                 setNewComment(e.target.value);
@@ -229,7 +229,7 @@ export default function MediaComments({ id }: { id: any }) {
                                 <img className='comments-user-image' src={users?.get(comment.user_id)?.profile_picture} alt="user profile picture" />
                                 <h2 className="comments-user">{users?.get(comment.user_id)?.username ?? "username"}</h2>
                                 <h1 className="comments-time">{timeSince(comment.created_at) + (comment.modified ? " (Modified)" : "")}</h1>
-                                {isEditingComment && currentUser._id === comment.user_id && comment._id == editCommentId && <BsCheck2 className="comments-accept-icon" onClick={() => {
+                                {isEditingComment && currentUser._id === comment.user_id && comment._id === editCommentId && <BsCheck2 className="comments-accept-icon" onClick={() => {
                                     editComment(comment._id);
                                     setIsEditingComment(false);
                                 }} />}
@@ -238,18 +238,15 @@ export default function MediaComments({ id }: { id: any }) {
                                     setEditedComment(comment.comment);
                                     setEditCommentId(comment._id);
                                 }} />}
-                                {isEditingComment && currentUser._id === comment.user_id && comment._id == editCommentId && <FcCancel className="comments-cancel-icon" onClick={() => {
+                                {isEditingComment && currentUser._id === comment.user_id && comment._id === editCommentId && <FcCancel className="comments-cancel-icon" onClick={() => {
                                     setIsEditingComment(false);
                                 }} />}
                                 {!isEditingComment && currentUser._id === comment.user_id && <RiDeleteBinLine className='comments-delete-icon' onClick={() => {
                                     deleteComment(comment._id);
                                 }} />}
-
                             </div>
                             <div className="comments-body">
-                                {/* i want that when i click the edit button you switch the <p> to something that i can edit*/}
-                                {/* <p className="comments-text">{comment.comment}</p> */}
-                                {isEditingComment && comment._id == editCommentId
+                                {isEditingComment && comment._id === editCommentId
                                     ?
                                     <input className="comments-textarea" value={editedComment} onChange={(e) => setEditedComment(e.target.value)} />
                                     :

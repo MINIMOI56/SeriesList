@@ -1,4 +1,4 @@
-import ConnectionForm from './component/connection-form';
+import ConnectionForm from './components/connection-form';
 import './index.css';
 import '@picocss/pico'
 

@@ -1,0 +1,15 @@
+.profile-page {
+    width: 100%;
+    background-color: rgba(36,36,40,255);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: fit-content;
+    min-height: 100vh;
+    padding-top: 120px;
+    overflow: hidden;
+    align-items: center;
+}
