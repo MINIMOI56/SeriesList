@@ -1,0 +1,39 @@
+.media-card {
+    height: 300px;
+    width: 200px;
+    border-radius: 15px;
+    transition: all 0.05s ease-in-out;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.wrapper {
+    width: 950px;
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+}
+
+.wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.item {
+    min-width: 200px;
+    text-align: center;
+}
+
+.item:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.list-title {
+    font-size: 40px;
+    font-weight: 500;
+    color: #4fb5ab;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}

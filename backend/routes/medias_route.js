@@ -49,6 +49,19 @@ router.get('/:id', async (req, res) => {
 });
 
 
+/* GET media by ids*/
+router.get('/ids/:ids', async (req, res) => {
+  await mongoose.connect(process.env.MONGO_APP_URI);
+  try {
+    const ids = req.params.ids.split(',');
+    const medias = await Media.find({ _id: { $in: ids } });
+    res.json(medias);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
 /* POST new media */
 router.post('/', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);

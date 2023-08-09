@@ -15,6 +15,7 @@ import Connexion from './routes/connexion';
 import Inscription from './routes/inscription';
 import Serie from './routes/serie';
 import Profile from './routes/profile';
+import ListPerso from './routes/list-perso';
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/serie/:id",
         element: <Serie />,
+      },
+      {
+        path: "/liste-perso/",
+        element: <ListPerso />,
       },
       {
         path: "/profile",

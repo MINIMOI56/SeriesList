@@ -8,6 +8,7 @@ export default function Index() {
         <nav className='nav-bar'>
             <ul>
                 <li><a href="/home" className='secondary text'>Home</a></li>
+                <li><a href="/liste-perso" className='secondary text'>Ma liste</a></li>
             </ul>
             <ul>
                 <li>

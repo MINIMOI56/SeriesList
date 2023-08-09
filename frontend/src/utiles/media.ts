@@ -10,6 +10,10 @@ export const media = {
         return axiosInstance.get('medias/' + id);
     },
 
+    getMediaByIds: (ids: string[]) => {
+        return axiosInstance.get('medias/ids/' + ids);
+    },
+
     getPopularMedia: () => {
         return axiosInstance.get('medias/mostPopular');
     },
