@@ -121,8 +121,8 @@ export default function AddMediaForm() {
 
 
     return (
-        <div className='inscription-form-container'>
-            <form className='inscription-form' onSubmit={send}>
+        <div className='add-form-container'>
+            <form onSubmit={send}>
                     <label htmlFor="nom" className='text'>Titre</label>
                     <input
                         type="text"
@@ -150,7 +150,7 @@ export default function AddMediaForm() {
                     }
                     }
                 />
-                <label htmlFor="password" className='text'>Nombre d'épisodes</label>
+                <label className='text'>Nombre d'épisodes</label>
                 <input
                     type="text"
                     className='small-text'
@@ -159,7 +159,7 @@ export default function AddMediaForm() {
                     }
                     }
                 />
-                <label htmlFor="password" className='text'>Durée moyenne d'un épisode</label>
+                <label className='text'>Durée moyenne d'un épisode</label>
                 <input
                     type="text"
                     className='small-text'
@@ -168,7 +168,7 @@ export default function AddMediaForm() {
                     }
                     }
                 />
-                <label htmlFor="password" className='text'>Note/5</label>
+                <label className='text'>Note/5</label>
                 <input
                     type="text"
                     className='small-text'
@@ -177,7 +177,7 @@ export default function AddMediaForm() {
                     }
                     }
                 />
-                <label htmlFor="password" className='text'>Url de l'image</label>
+                <label className='text'>Url de l'image</label>
                 <input
                     type="text"
                     className='small-text'

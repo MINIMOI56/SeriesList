@@ -33,7 +33,7 @@ export default function InscriptionForm() {
         if (usernameValid && emailValid && passwordValid && passwordConfirmationValid) {
             authentification.inscription(username, email, password)
                 .then(response => {
-                    if (response.status === 200) {
+                    if (response.status === 201) {
                         resetForm();
                         navigate('/connexion');
                     }
