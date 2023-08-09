@@ -16,6 +16,7 @@ export default function Index() {
                 </li>
             </ul>
             <ul>
+                <li><a href="/add-media" className='secondary text'>Demande d'ajout</a></li>
                 <li><a href="/profile" className='secondary text'>Profile</a></li>
                 <li>
                     <a href="/connexion" className='secondary text' onClick={

@@ -20,5 +20,9 @@ export const media = {
 
     getNewestMedia: () => {
         return axiosInstance.get('medias/newest');
+    },
+
+    addMedia: (data: any) => {
+        return axiosInstance.post('medias/', data);
     }
 }

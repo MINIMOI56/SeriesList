@@ -16,6 +16,7 @@ import Inscription from './routes/inscription';
 import Serie from './routes/serie';
 import Profile from './routes/profile';
 import ListPerso from './routes/list-perso';
+import AddMedia from './routes/add-media';
 
 
 const router = createBrowserRouter([
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />
+      },
+      {
+        path: "/add-media",
+        element: <AddMedia />
       }
     ]
   }
