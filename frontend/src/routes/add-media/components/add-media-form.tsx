@@ -2,7 +2,6 @@ import { FormEvent, useState } from 'react';
 import './add-media-form.css'
 import { useNavigate } from 'react-router-dom';
 import { media } from '../../../utiles/media';
-import Media from '../../../models/media';
 
 export default function AddMediaForm() {
     const [title, setTitle] = useState('');
@@ -20,11 +19,11 @@ export default function AddMediaForm() {
     const navigate = useNavigate();
 
     /**
-     * This function is used to send the data to the backend and create a new user
-     * It also checks if the data is valid
-     * @param The user's email and password
-     * @throws An error if the email is not valid
-     * @throws An error if the password is not valid
+     * Cette fonction est utilisée pour envoyer les données au backend et créer un nouvel utilisateur
+     * Elle vérifie également si les données sont valides
+     * @param L'adresse e-mail et le mot de passe de l'utilisateur
+     * @throws Une erreur si l'adresse e-mail n'est pas valide
+     * @throws Une erreur si le mot de passe n'est pas valide
      */
     function send(event: FormEvent) {
         event.preventDefault();
@@ -74,10 +73,10 @@ export default function AddMediaForm() {
     }
 
     /**
-     * This function is used to check if the title is valid
-     * @param The user's title
-     * @throws An error if the title is not valid
-     * @returns True if the title is valid
+     * Cette fonction est utilisée pour vérifier si le titre est valide
+     * @param Le titre de l'utilisateur
+     * @throws Une erreur si le titre n'est pas valide
+     * @returns Vrai si le titre est valide
      */
     const validateTitle = (title: string) => {
         if (title === '') {
@@ -90,10 +89,10 @@ export default function AddMediaForm() {
 
 
     /**
-     * This function is used to check if the description is valid
-     * @param The user's description
-     * @throws An error if the desc is not valid
-     * @returns True if the desc is valid
+     * Cette fonction est utilisée pour vérifier si la description est valide
+     * @param La description de l'utilisateur
+     * @throws Une erreur si la description n'est pas valide
+     * @returns Vrai si la description est valide
      */
     const validateDescription = (desc: string) => {
         if (desc === '') {
@@ -105,10 +104,10 @@ export default function AddMediaForm() {
     }
 
     /**
-     * This function is used to check if the image is valid
-     * @param The image password
-     * @throws An error if the image is not valid
-     * @returns True if the image is valid
+     * Cette fonction est utilisée pour vérifier si l'image est valide
+     * @param L'image de l'utilisateur
+     * @throws Une erreur si l'image n'est pas valide
+     * @returns Vrai si l'image est valide
      */
     const validateImageUrl = (imageUrl: string) => {
         if (imageUrl === '') {
@@ -123,15 +122,15 @@ export default function AddMediaForm() {
     return (
         <div className='add-form-container'>
             <form onSubmit={send}>
-                    <label htmlFor="nom" className='text'>Titre</label>
-                    <input
-                        type="text"
-                        className='small-text'
-                        onChange={(event) => {
-                            setTitle(event.target.value);
-                        }
-                        }
-                    />
+                <label htmlFor="nom" className='text'>Titre</label>
+                <input
+                    type="text"
+                    className='small-text'
+                    onChange={(event) => {
+                        setTitle(event.target.value);
+                    }
+                    }
+                />
                 <label className='text'>Description</label>
                 <input
                     type="text"

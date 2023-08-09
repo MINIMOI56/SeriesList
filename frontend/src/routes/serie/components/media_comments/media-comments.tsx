@@ -26,10 +26,11 @@ export default function MediaComments({ id }: { id: any }) {
     const [newCommentError, setNewCommentError] = useState<string>('');
 
 
-    /* Fonction qui formatte la date en temps écoulé
-    * Exemple: "il y a 2 jours"
-    * J'ai demander à chatGPT de reformater la fonction
-    *que javais fait pour que ce soit plus simple et propre
+    /** 
+     * Fonction qui formatte la date en temps écoulé
+     * Exemple: "il y a 2 jours"
+     * J'ai demander à chatGPT de reformater la fonction
+     * que javais fait pour que ce soit plus simple et propre
     */
     const timeSince = (date: Date) => {
         if (date == null) {
@@ -60,11 +61,11 @@ export default function MediaComments({ id }: { id: any }) {
 
 
     /**
-    * This function is used to send the data to the backend and create a new comment for the media
-    * It also checks if the data is valid
-    * @param The user's comment
-    * @throws An error if the comment is not valid
-    */
+     * Cette fonction est utilisée pour envoyer les données au backend et créer un nouveau commentaire pour le média
+     * Elle vérifie également si les données sont valides
+     * @param Le commentaire de l'utilisateur
+     * @throws Une erreur si le commentaire n'est pas valide
+     */
     function sendComment(event: FormEvent) {
         event.preventDefault();
 
@@ -87,11 +88,11 @@ export default function MediaComments({ id }: { id: any }) {
 
 
     /**
-    * This function is used to check if the comment is valid
-    * @param The user's comment
-    * @throws An error if the comment is not valid
-    * @returns True if the comment is valid
-    */
+     * Cette fonction est utilisée pour vérifier si le commentaire est valide
+     * @param Le commentaire de l'utilisateur
+     * @throws Une erreur si le commentaire n'est pas valide
+     * @returns Vrai si le commentaire est valide
+     */
     const validateComment = (comment: string) => {
         if (comment === '') {
             setNewCommentError('Veuillez entrer un nom d\'utilisateur');
@@ -112,10 +113,10 @@ export default function MediaComments({ id }: { id: any }) {
 
 
     /**
-     * This function is used to edit a comment
-     * @param The comment's id
-     * @throws An error if the comment is not edited
-     * @returns True if the comment is edited
+     * Cette fonction est utilisée pour modifier un commentaire
+     * @param L'identifiant du commentaire
+     * @throws Une erreur si le commentaire n'est pas modifié
+     * @returns Vrai si le commentaire est modifié
      */
     const editComment = (commentId: string) => {
         comment.editComment(commentId, editedComment).then(response => {
@@ -129,11 +130,11 @@ export default function MediaComments({ id }: { id: any }) {
 
 
     /**
-     * This function is used to delete a comment
-     * @param The comment's id
-     * @throws An error if the comment is not deleted
-     * @returns True if the comment is deleted
-     * @returns False if the comment is not deleted
+     * Cette fonction est utilisée pour supprimer un commentaire
+     * @param L'identifiant du commentaire
+     * @throws Une erreur si le commentaire n'est pas supprimé
+     * @returns Vrai si le commentaire est supprimé
+     * @returns Faux si le commentaire n'est pas supprimé
      */
     const deleteComment = (commentId: string) => {
         comment.deleteComment(commentId).then(response => {

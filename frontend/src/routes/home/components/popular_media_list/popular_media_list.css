@@ -60,11 +60,11 @@ p {
     position: relative;
 }
 
-/** this css was found here: https://codepen.io/JacobLett/pen/dOYxJb 
-*  it is used to create a gradient on top of the image
-*  to make the text more readable
-*  Modified by: Maxime Boucher
-*/
+/** Ce CSS a été trouvé ici : https://codepen.io/JacobLett/pen/dOYxJb 
+ *  Il est utilisé pour créer un dégradé sur l'image
+ *  afin de rendre le texte plus lisible
+ *  Modifié par : Maxime Boucher
+ */
 .img-gradient:after {
     content: '';
     position: absolute;

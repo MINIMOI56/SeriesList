@@ -135,7 +135,6 @@ textarea:focus {
     box-shadow: 0 0 0 0.2rem rgba(79, 181, 171, 0.25);
 }
 
-/* add hover on all clickable other than #4fb5ab*/
 .comments-delete-icon:hover,
 .comments-edit-icon:hover,
 .comments-accept-icon:hover,

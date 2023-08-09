@@ -16,11 +16,11 @@ export default function InscriptionForm() {
     const navigate = useNavigate();
 
     /**
-     * This function is used to send the data to the backend and create a new user
-     * It also checks if the data is valid
-     * @param The user's email and password
-     * @throws An error if the email is not valid
-     * @throws An error if the password is not valid
+     * Cette fonction est utilisée pour envoyer les données au backend et créer un nouvel utilisateur
+     * Elle vérifie également si les données sont valides
+     * @param L'adresse e-mail et le mot de passe de l'utilisateur
+     * @throws Une erreur si l'adresse e-mail n'est pas valide
+     * @throws Une erreur si le mot de passe n'est pas valide
      */
     function send(event: FormEvent) {
         event.preventDefault();
@@ -61,10 +61,10 @@ export default function InscriptionForm() {
     }
 
     /**
-     * This function is used to check if the username is valid
-     * @param The user's username
-     * @throws An error if the username is not valid
-     * @returns True if the username is valid
+     * Cette fonction est utilisée pour vérifier si le nom d'utilisateur est valide
+     * @param Le nom d'utilisateur de l'utilisateur
+     * @throws Une erreur si le nom d'utilisateur n'est pas valide
+     * @returns Vrai si le nom d'utilisateur est valide
      */
     const validateUsername = (username: string) => {
         if (username === '') {
@@ -77,10 +77,10 @@ export default function InscriptionForm() {
 
 
     /**
-     * This function is used to check if the email is valid
-     * @param The user's email
-     * @throws An error if the email is not valid
-     * @returns True if the email is valid
+     * Cette fonction est utilisée pour vérifier si l'adresse e-mail est valide
+     * @param L'adresse e-mail de l'utilisateur
+     * @throws Une erreur si l'adresse e-mail n'est pas valide
+     * @returns Vrai si l'adresse e-mail est valide
      */
     const validateEmail = (email: string) => {
         if (email === '') {
@@ -96,10 +96,10 @@ export default function InscriptionForm() {
     }
 
     /**
-     * This function is used to check if the password is valid
-     * @param The user's password
-     * @throws An error if the password is not valid
-     * @returns True if the password is valid
+     * Cette fonction est utilisée pour vérifier si le mot de passe est valide
+     * @param Le mot de passe de l'utilisateur
+     * @throws Une erreur si le mot de passe n'est pas valide
+     * @returns Vrai si le mot de passe est valide
      */
     const validatePassword = (password: string) => {
         if (password === '') {
@@ -115,10 +115,10 @@ export default function InscriptionForm() {
     }
 
     /**
-     * This function is used to check if the password confirmation is valid
-     * @param The user's password confirmation
-     * @throws An error if the password confirmation is not valid
-     * @returns True if the password confirmation is valid
+     * Cette fonction est utilisée pour vérifier si la confirmation du mot de passe est valide
+     * @param La confirmation du mot de passe de l'utilisateur
+     * @throws Une erreur si la confirmation du mot de passe n'est pas valide
+     * @returns Vrai si la confirmation du mot de passe est valide
      */
     const validatePasswordConfirmation = (passwordConfirmation: string) => {
         if (passwordConfirmation === '') {
@@ -136,17 +136,17 @@ export default function InscriptionForm() {
     return (
         <div className='inscription-form-container'>
             <form className='inscription-form' onSubmit={send}>
-                    <label htmlFor="nom" className='text'>Nom d'utilisateur</label>
-                    <input
-                        type="text"
-                        id="nom"
-                        name="nom"
-                        className='small-text'
-                        onChange={(event) => {
-                            setUsername(event.target.value);
-                        }
-                        }
-                    />
+                <label htmlFor="nom" className='text'>Nom d'utilisateur</label>
+                <input
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    className='small-text'
+                    onChange={(event) => {
+                        setUsername(event.target.value);
+                    }
+                    }
+                />
                 <label htmlFor="email" className='text'>Email</label>
                 <input
                     type="email"
