@@ -26,24 +26,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Routes for the API
+//Routes pour l'API
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/medias', mediaRouter);
 app.use('/comments', commentRouter);
 
-// catch 404 and forward to error handler
+// catch 404 et evoyer à la page d'erreur
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// gestion des erreurs
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+  // définir les variables locales, fournissant des erreurs uniquement en développement
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // afficher la page d'erreur
   res.status(err.status || 500);
   res.render('error');
 });

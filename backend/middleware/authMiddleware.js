@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
 
 /**
- * Validate the token
- * @param The token
- * @returns The user
- * @throws An error if the token is invalid
- * @throws An error if the token is missing
+ * Valider le jeton
+ * @param Le jeton
+ * @returns L'utilisateur
+ * @throws Une erreur si le jeton n'est pas valide
+ * @throws Une erreur si le jeton est manquant
  */
 function validateToken(req, res, next) {
     const authHeader = req.headers['authorization']

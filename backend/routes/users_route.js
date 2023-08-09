@@ -9,7 +9,11 @@ const jwt = require('jsonwebtoken');
 const validateToken = require('../middleware/authMiddleware.js');
 
 
-/* GET all users */
+/**
+ * Obtenir tous les utilisateurs
+ * @return Tous les utilisateurs
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.get('/', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -21,7 +25,11 @@ router.get('/', async (req, res) => {
 });
 
 
-/* GET user by id*/
+/**
+ * Obtenir un utilisateur par son id
+ * @return Un utilisateur
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.get('/:id', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -33,7 +41,11 @@ router.get('/:id', async (req, res) => {
 });
 
 
-/* GET user's favorite by userId*/
+/**
+ * Obtenir les favoris d'un utilisateur
+ * @return Les favoris d'un utilisateur
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.get('/favorite/:userId', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -49,7 +61,12 @@ router.get('/favorite/:userId', async (req, res) => {
 });
 
 
-/* PUT user by id */
+/**
+ * Modifier un utilisateur
+ * @return L'utilisateur modifié
+ * @throws 400 - Erreur de la requête
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.put('/:id', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -63,7 +80,12 @@ router.put('/:id', async (req, res) => {
 });
 
 
-/* DELETE user by id */
+/**
+ * Supprimer un utilisateur
+ * @return L'utilisateur supprimé
+ * @throws 400 - Erreur de la requête
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.delete('/:id', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -76,11 +98,11 @@ router.delete('/:id', async (req, res) => {
 
 
 /**
- * User login
- * @param The user email and password
- * @returns The authentication token
- * @throws An error if the email or password is invalid
- * @throws An error if the password does not respect the criteria
+ * Connexion de l'utilisateur
+ * @param L'adresse e-mail et le mot de passe de l'utilisateur
+ * @returns Le jeton d'authentification
+ * @throws Une erreur si l'adresse e-mail ou le mot de passe n'est pas valide
+ * @throws Une erreur si le mot de passe ne respecte pas les critères
  */
 router.post('/connection', async function (req, res, next) {
   await mongoose.connect(process.env.MONGO_APP_URI);
@@ -119,11 +141,11 @@ router.post('/connection', async function (req, res, next) {
 
 
 /**
- * User registration
- * @param The user email and password
- * @returns A message if the user is created
- * @throws An error if the email is already used
- * @throws An error if the password does not respect the criteria
+ * Inscription de l'utilisateur
+ * @param L'adresse e-mail et le mot de passe de l'utilisateur
+ * @returns Un message si l'utilisateur est créé
+ * @throws Une erreur si l'adresse e-mail est déjà utilisée
+ * @throws Une erreur si le mot de passe ne respecte pas les critères
  */
 router.post('/inscription', async function (req, res, next) {
   await mongoose.connect(process.env.MONGO_APP_URI);
@@ -161,13 +183,13 @@ router.post('/inscription', async function (req, res, next) {
 
 
 /**
- * Add a media_id to the user's favorite list
- * @param The user id and the media id
- * @returns A message if the media is added
+ * Ajouter un media_id à la liste de favoris de l'utilisateur
+ * @param L'identifiant de l'utilisateur et l'identifiant du média
+ * @returns Un message si le média est ajouté
  * @middleware validateToken
- * @throws An error if the media is already in the favorite list
- * @throws An error if the media does not exist
- * @throws An error if the user does not exist
+ * @throws Une erreur si le média est déjà dans la liste de favoris
+ * @throws Une erreur si le média n'existe pas
+ * @throws Une erreur si l'utilisateur n'existe pas
  */
 router.post('/addFavorite/:userId/:mediaId' , async function (req, res, next) {
   await mongoose.connect(process.env.MONGO_APP_URI);
@@ -197,13 +219,13 @@ router.post('/addFavorite/:userId/:mediaId' , async function (req, res, next) {
 
 
 /**
- * Delete a media_id to the user's favorite list
- * @param The user id and the media id
- * @returns A message if the media is deleted
+ * Supprimer un media_id de la liste de favoris de l'utilisateur
+ * @param L'identifiant de l'utilisateur et l'identifiant du média
+ * @returns Un message si le média est supprimé
  * @middleware validateToken
- * @throws An error if the media is not in the favorite list
- * @throws An error if the media does not exist
- * @throws An error if the user does not exist
+ * @throws Une erreur si le média n'est pas dans la liste de favoris
+ * @throws Une erreur si le média n'existe pas
+ * @throws Une erreur si l'utilisateur n'existe pas
  */
 router.delete('/deleteFavorite/:userId/:mediaId' , async function (req, res, next) {
   await mongoose.connect(process.env.MONGO_APP_URI);

@@ -4,7 +4,12 @@ const mongoose = require('mongoose');
 const Media = require('../models/media_entity');
 require('dotenv').config();
 
-/* GET all medias */
+
+/**
+ * Obtenir tous les médias
+ * @return Tous les médias
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.get('/', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -15,7 +20,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-/* GET most popular media*/
+
+/**
+ * Obtenir les médias les plus populaires
+ * @return Les médias les plus populaires
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.get('/mostPopular', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -26,7 +36,12 @@ router.get('/mostPopular', async (req, res) => {
   }
 });
 
-/* GET the newest media*/
+
+/**
+ * Obtenir les médias les plus récents
+ * @return Les médias les plus récents
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.get('/newest', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -37,7 +52,12 @@ router.get('/newest', async (req, res) => {
   }
 });
 
-/* GET media by id*/
+
+/**
+ * Obtenir un média par son id
+ * @return Un média par son id
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.get('/:id', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -49,7 +69,11 @@ router.get('/:id', async (req, res) => {
 });
 
 
-/* GET media by ids*/
+/**
+ * Obtenir les médias par plusieurs ids
+ * @return Les médias par plusieurs ids
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.get('/ids/:ids', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -62,7 +86,12 @@ router.get('/ids/:ids', async (req, res) => {
 });
 
 
-/* POST new media */
+/**
+ * Ajouter un média
+ * @return Le média ajouté
+ * @throws 400 - Erreur de la requête
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.post('/', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -74,7 +103,13 @@ router.post('/', async (req, res) => {
   }
 });
 
-/* PUT media by id */
+
+/**
+ * Modifier un média
+ * @return Le média modifié
+ * @throws 400 - Erreur de la requête
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.put('/:id', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
@@ -87,7 +122,13 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-/* DELETE media by id */
+
+/**
+ * Supprimer un média
+ * @return Le média supprimé
+ * @throws 400 - Erreur de la requête
+ * @throws 500 - Erreur Interne du Serveur
+ */
 router.delete('/:id', async (req, res) => {
   await mongoose.connect(process.env.MONGO_APP_URI);
   try {
