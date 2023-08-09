@@ -1,5 +1,5 @@
 
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 import User from '../../../models/user';
 import { user } from '../../../utiles/user';
 import './profile-info.css';
@@ -25,13 +25,27 @@ export default function ProfileInfo() {
 
         user.getUserById(userId).then((res) => {
             setCurrentUser(res.data);
+            setNewUsername(res.data.username);
+            setNewEmail(res.data.email);
+            setNewProfilePicture(res.data.profile_picture);
         })
     };
 
 
     // met à jour l'utilisateur courant
     const updateUser = (id: string) => {
-        user.updateUser(id, currentUser).then((res) => {
+        const newUser = {
+            _id: currentUser._id,
+            username: newUsername,
+            email: newEmail,
+            password: currentUser.password,
+            profile_picture: newProfilePicture,
+            media_id: currentUser.media_id,
+            created_at: currentUser.created_at
+        }
+        setCurrentUser(newUser);
+
+        user.updateUser(id,newUser ).then((res) => {
             setIsEditing(false);
         })
     };
@@ -65,12 +79,8 @@ export default function ProfileInfo() {
 
             {!isEditing && <AiFillEdit className='edit-icon' onClick={() => {
                 setIsEditing(true);
-                setNewUsername(currentUser.username);
-                setNewEmail(currentUser.email);
-                setNewProfilePicture(currentUser.profile_picture);
             }} />}
             {isEditing && <BsCheck2 className='accept-icon' onClick={() => {
-                setCurrentUser({ ...currentUser, username: newUsername, email: newEmail, profile_picture: newProfilePicture });
                 updateUser(currentUser._id);
                 setIsEditing(false);
             }} />}
