@@ -169,7 +169,7 @@ router.post('/inscription', async function (req, res, next) {
  * @throws An error if the media does not exist
  * @throws An error if the user does not exist
  */
-router.post('/addFavorite/:userId/:mediaId', validateToken , async function (req, res, next) {
+router.post('/addFavorite/:userId/:mediaId' , async function (req, res, next) {
   await mongoose.connect(process.env.MONGO_APP_URI);
 
   const user = await User.findById(req.params.userId);
@@ -185,10 +185,13 @@ router.post('/addFavorite/:userId/:mediaId', validateToken , async function (req
     user.media_ids.push(req.params.mediaId);
     await user.save().then(() => {
       res.status(201).json({ message: 'Media added.' });
-    });
+    }).catch((err) => {
+      res.status(501).json({ error: err });
+    }
+    );
   }
   catch (err) {
-    res.status(500).json({ error: 'An error as occured.' });
+    res.status(500).json({ error: err });
   }
 });
 
@@ -202,7 +205,7 @@ router.post('/addFavorite/:userId/:mediaId', validateToken , async function (req
  * @throws An error if the media does not exist
  * @throws An error if the user does not exist
  */
-router.delete('/deleteFavorite/:userId/:mediaId', validateToken , async function (req, res, next) {
+router.delete('/deleteFavorite/:userId/:mediaId' , async function (req, res, next) {
   await mongoose.connect(process.env.MONGO_APP_URI);
 
   const user = await User.findById(req.params.userId);
@@ -221,7 +224,7 @@ router.delete('/deleteFavorite/:userId/:mediaId', validateToken , async function
     });
   }
   catch (err) {
-    res.status(500).json({ error: 'An error as occured.' });
+    res.status(500).json({ error: err });
   }
 });
 

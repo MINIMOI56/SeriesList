@@ -1,6 +1,7 @@
 import './nav-bar.css'
 import '@picocss/pico'
 import Logo from '../../images/logo.png'
+import { authentification } from '../../utiles/authentification';
 
 export default function Index() {
     return (
@@ -15,6 +16,13 @@ export default function Index() {
             </ul>
             <ul>
                 <li><a href="/profile" className='secondary text'>Profile</a></li>
+                <li>
+                    <a href="/connexion" className='secondary text' onClick={
+                        () => {
+                            authentification.deconnexion();
+                        }
+                    }>Déconnection</a>
+                </li>
             </ul>
         </nav>
     );

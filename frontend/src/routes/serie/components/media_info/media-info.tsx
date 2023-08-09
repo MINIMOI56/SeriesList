@@ -1,13 +1,23 @@
 
-import React, { Component, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import Media from '../../../../models/media';
 import { media } from '../../../../utiles/media';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './media-info.css';
+import jwt_decode from 'jwt-decode';
+
+import { MdFavoriteBorder } from 'react-icons/md';
+import { MdFavorite } from 'react-icons/md';
+import User from '../../../../models/user';
+import { user } from '../../../../utiles/user';
+
 
 export default function MediaInfo({ id }: { id: any }) {
     const [medias, setMedias] = useState<Media>();
     const [enChargement, setEnChargement] = useState<boolean>(true);
+    const [isfavorite, setIsFavorite] = useState<boolean>(false);
+    const [mediaIds, setMediaIds] = useState<string[]>([]);
+    const [currentUser, setCurrentUser] = useState<User>({ _id: '', username: '', email: '', password: '', profile_picture: '', media_id: [""], created_at: new Date() });
 
     // Fonction qui formatte la date
     const formatDate = (date: Date) => {
@@ -36,7 +46,50 @@ export default function MediaInfo({ id }: { id: any }) {
         });
     };
 
-    React.useEffect(() => {
+    // récupère l'utilisateur courant
+    const getCurrentUser = () =>  {
+        const token = localStorage.getItem('token')?.toString() ?? '{}';
+        const decodedToken: User = jwt_decode(token);
+        const userId = decodedToken._id
+
+        user.getUserById(userId).then((res) => {
+            setCurrentUser(res.data);
+            getFavorite(res.data._id); 
+        });
+
+    };
+
+    // récupère la liste des favoris de l'utilisateur connecté
+    const getFavorite = (userId: string) => {
+        user.getAllMediaByUserId(userId).then((res) => {
+            setMediaIds(res.data);
+            
+            if (res.data.includes(id)) {
+                setIsFavorite(true);
+            }
+        });
+    };
+
+    // ajoute la série dans la liste des favoris
+    const addFavorite = () => {
+        user.addMediaToUser(currentUser._id, id).then((res) => {
+            getFavorite(
+                currentUser._id
+            );
+        });
+    };
+
+    // supprime la série de la liste des favoris
+    const deleteFavorite = () => {
+        user.removeMediaFromUser(currentUser._id, id).then((res) => {
+            getFavorite(
+                currentUser._id
+            );
+        });
+    };
+
+    useEffect(() => {
+        getCurrentUser();
         getMediaById();
     }, []);
 
@@ -54,6 +107,13 @@ export default function MediaInfo({ id }: { id: any }) {
                 <div className="row">
                     <div className="col-6">
                         <img src={medias.image_url} alt="image" className="serie-image" />
+                        {isfavorite ? <MdFavorite className="serie-favorite" onClick={() => {
+                            setIsFavorite(false);
+                            deleteFavorite();
+                        }} /> : <MdFavoriteBorder className="serie-favorite" onClick={() => {
+                            setIsFavorite(true);
+                            addFavorite();
+                        }} />}
                     </div>
                     <div className="col-6">
                         <div className="serie-info-layout">

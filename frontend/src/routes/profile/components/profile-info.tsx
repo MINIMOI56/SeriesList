@@ -12,7 +12,6 @@ import { FcCancel } from 'react-icons/fc';
 
 export default function ProfileInfo() {
     const [currentUser, setCurrentUser] = useState<User>({ _id: '', username: '', email: '', password: '', profile_picture: '', media_id: [""], created_at: new Date() });
-    // const [newUser, setNewUser] = useState<User>({ _id: '', username: '', email: '', password: '', profile_picture: '', media_id: [""], created_at: new Date() });
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [newUsername, setNewUsername] = useState<string>('');
     const [newEmail, setNewEmail] = useState<string>('');

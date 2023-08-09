@@ -224,7 +224,7 @@ export default function MediaComments({ id }: { id: any }) {
                         </form>
                     </div>
                     {comments.map((comment) => (
-                        <div className='comments-container'>
+                        <div className='comments-container' key={comment._id}>
                             <div className="comments-header">
                                 <img className='comments-user-image' src={users?.get(comment.user_id)?.profile_picture} alt="user profile picture" />
                                 <h2 className="comments-user">{users?.get(comment.user_id)?.username ?? "username"}</h2>

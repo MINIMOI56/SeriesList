@@ -16,5 +16,5 @@ export const media = {
 
     getNewestMedia: () => {
         return axiosInstance.get('medias/newest');
-    },
+    }
 }

@@ -47,3 +47,18 @@
     border-radius: 5px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
+
+.serie-favorite:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.serie-favorite {
+    position: absolute;
+    top: 140px;
+    left: 120px;
+    color: red;
+    font-size: 40px;
+    transition: all 0.05s ease-in-out;
+    z-index: 1;
+}
