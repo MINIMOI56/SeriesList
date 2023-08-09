@@ -31,6 +31,10 @@ export default function ListPerso() {
 
     // récupère les séries
     const getMedias = (ids: [string]) => {
+        if (ids.length < 1) {
+            setEnChargement(false);
+            return;
+        }
         media.getMediaByIds(ids).then((res) => {
             setMedias(res.data);
             setEnChargement(false);
